@@ -30,17 +30,17 @@ struct stat {
 // error code
 const char *error_str[] = {
 	"OK",
-	"err1",                     // WSAS ÒÎÓÏ‡ÎÒˇ
-	"err2",                     // œË‚ˇÁÍ‡ ÒÓÍÂÚ‡
-	"err3",                     // ¡ËÌ‰ ÒÂ‚Â‡ ÌÂ Ò‡·ÓÚ‡Î, ÔÓ‚Â¸ÚÂ ip ‡‰ÂÒ Ë ÔÓÚ
-	"err4",                     // œÂ‚˚¯ÂÌ ËÌÚÂ‚‡Î ÓÊË‰‡ÌËˇ Á‡ÔÓÒ‡
-	"err5",                     // –‡·ÓÚ‡ Ò ÒÂ‚ÂÌ˚Ï Ú‡ÈÏÂÓÏ ÒÎÓÏ‡ÎÒ¸, ‚ÓÁÏÓÊÌÓ ‚˚ ‚‚ÂÎË ÒÎË¯ÍÓÏ Ï‡ÎÂÌ¸ÍÓÂ ÁÌ‡˜ÂÌËÂ timeout
-	"err6",                     // Œ¯Ë·Í‡ ÔËÌˇÚËˇ Á‡ÔÓÒ‡, ÔÂÂÔÓ‚Â¸ÚÂ ‚‚Â‰∏ÌÌ˚Â ‰‡ÌÌ˚Â
-	"err7",                     // œÓÎÛ˜ÂÌÓ ÒÓÓ·˘ÂÌËÂ Ó· Ó¯Ë·ÍÂ
-	"err8",                     // œÂÂ‰‡˜‡ Ù‡ÈÎ‡ ÌÂ Û‰‡Î‡Ò¸
-	"err9",                     // œÓÎÛ˜ÂÌÓ ÔÓ‰Ú‚ÂÊÂÌËÂ Ì‡ ÌÂ‚ÂÌ˚È ·ÎÓÍ!
-	"err10",                    // ŒÚÍ˚ÚËÂ Ù‡ÈÎ‡ ÔÓËÁÓ¯ÎÓ ÌÂ Û‰‡˜ÌÓ
-	"err11"                     // Õ‡ ·Û‰Û˘ÂÂ
+	"err1",                     // WSAS √±√´√Æ√¨√†√´√±√ø
+	"err2",                     // √è√∞√®√¢√ø√ß√™√† √±√Æ√™√•√≤√†
+	"err3",                     // √Å√®√≠√§ √±√•√∞√¢√•√∞√† √≠√• √±√∞√†√°√Æ√≤√†√´, √Ø√∞√Æ√¢√•√∞√º√≤√• ip √†√§√∞√•√± √® √Ø√Æ√∞√≤
+	"err4",                     // √è√∞√•√¢√ª√∏√•√≠ √®√≠√≤√•√∞√¢√†√´ √Æ√¶√®√§√†√≠√®√ø √ß√†√Ø√∞√Æ√±√†
+	"err5",                     // √ê√†√°√Æ√≤√† √± √±√•√∞√¢√•√∞√≠√ª√¨ √≤√†√©√¨√•√∞√Æ√¨ √±√´√Æ√¨√†√´√±√º, √¢√Æ√ß√¨√Æ√¶√≠√Æ √¢√ª √¢√¢√•√´√® √±√´√®√∏√™√Æ√¨ √¨√†√´√•√≠√º√™√Æ√• √ß√≠√†√∑√•√≠√®√• timeout
+	"err6",                     // √é√∏√®√°√™√† √Ø√∞√®√≠√ø√≤√®√ø √ß√†√Ø√∞√Æ√±√†, √Ø√•√∞√•√Ø√∞√Æ√¢√•√∞√º√≤√• √¢√¢√•√§¬∏√≠√≠√ª√• √§√†√≠√≠√ª√•
+	"err7",                     // √è√Æ√´√≥√∑√•√≠√Æ √±√Æ√Æ√°√π√•√≠√®√• √Æ√° √Æ√∏√®√°√™√•
+	"err8",                     // √è√•√∞√•√§√†√∑√† √¥√†√©√´√† √≠√• √≥√§√†√´√†√±√º
+	"err9",                     // √è√Æ√´√≥√∑√•√≠√Æ √Ø√Æ√§√≤√¢√•√∞√¶√•√≠√®√• √≠√† √≠√•√¢√•√∞√≠√ª√© √°√´√Æ√™!
+	"err10",                    // √é√≤√™√∞√ª√≤√®√• √¥√†√©√´√† √Ø√∞√Æ√®√ß√Æ√∏√´√Æ √≠√• √≥√§√†√∑√≠√Æ
+	"err11"                     // √ç√† √°√≥√§√≥√π√•√•
 };
 
 // tftp transfer mode
@@ -247,14 +247,12 @@ const char *tftp_server(char *dir, int time, char *server_ip, char *client_ip, s
 			//----------------------------------------------------------------------
 			// Timeout is coming
 			case 0:
-			printf("timeout client request. server is closing.");
 				code = 4;
 				goto close_all;     //all close
 			break;
 			//----------------------------------------------------------------------
 			// error
 			case -1:
-				printf("Server: Some error encountered with code number: %d\n\n\nTimeout function get error.\n Restart a server please!", WSAGetLastError());
 				code = 5;
 				goto close_all;     //all close
 			break;
@@ -263,22 +261,24 @@ const char *tftp_server(char *dir, int time, char *server_ip, char *client_ip, s
 			default:
 			{
 
+				if (errors_number > 12) {
+					code = 12;
+					goto close_all;     //all close
+				}
+
 				//----------------------------------------------------------------------
 				// Try to receive some data, this is a blocking call
 
 				if ((cnt = recvfrom(sock, (char*) &get_m, BUFLEN, 0, (struct sockaddr*) &client, &c_len)) == SOCKET_ERROR) {
-					printf("recvfrom() failed with error code : %d" , WSAGetLastError());
 					code = 6;
 					goto close_all;     //all close
 				}
-
-				printf("Received packet from %s:%d\n", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
 
 				//----------------------------------------------------------------------
 				// Comparison of theoretical ip with real ip , if it's not a client ip, when wait new request
 
 				if (client.sin_addr.s_addr != inet_addr(client_ip)){
-					printf("Was try connecting from %s ip, but teoretical ip is %s\n", (char*)&client.sin_addr.s_addr, (char*)&client_ip);
+					errors_number++;
 					continue;
 				}
 
@@ -286,8 +286,7 @@ const char *tftp_server(char *dir, int time, char *server_ip, char *client_ip, s
 				// Check for Error code and if it's error, then close app
 
 				if (ntohs(get_m.opcode) == ERROR)  {
-					printf("%s.%u: error message received: %u %s\n", inet_ntoa(client.sin_addr), ntohs(client.sin_port), ntohs(get_m.error.error_code), get_m.error.error_string);
-					tftp_send_error(sock, 0, "get a request with ERROR code", &client, c_len);
+					tftp_send_error(sock, 0,(char *) "get a request with ERROR code", &client, c_len);
 					code = 7;
 					goto close_all;     //all close
 				}
@@ -298,31 +297,29 @@ const char *tftp_server(char *dir, int time, char *server_ip, char *client_ip, s
 				if (ntohs(get_m.opcode) == RRQ && block_number == 0) {
 
 					//----------------------------------------------------------------------
-					// check the size of getting packet
+					// Check the size of getting packet
 
 					if (cnt < 9) {
-						tftp_send_error(sock, 0, "invalid size", &client, c_len);
 						continue;
 					}
 
 					//----------------------------------------------------------------------
-					// check file and if file is valiable send first packet
+					// Check file and if file is valiable send first packet
 
 					if ((fd = file_open(&get_m, cnt, client, sock, dir)) == NULL){
-						printf("File opening failed!");
 						code = 10;
+						errors_number++;
 						continue;
 					}
 
 					//---------------------------------------------------------------------
-					// rebind a socket to new port
+					// Rebind a socket to new port
 
 					closesocket(sock);
 
 					server.sin_port = htons(PORT_2);
 
 					if ((sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == INVALID_SOCKET) {
-						printf("socket function failed with error: %u\n", WSAGetLastError());
 						code = 2;
 						goto close_all;     //all close
 					}
@@ -331,14 +328,13 @@ const char *tftp_server(char *dir, int time, char *server_ip, char *client_ip, s
 					// Bind the socket.
 
 					if (bind(sock ,(struct sockaddr *)&server , sizeof(server)) == SOCKET_ERROR){
-						printf("Bind failed with error code : %d" , WSAGetLastError());
 						code = 3;
 						goto close_all;     //all close
 					}
 				}
 
 				//--------------------------------------------------------------
-				// check for incorrect ACK
+				// Check for incorrect ACK
 
 				if (ntohs(get_m.opcode) == ACK) {
 
@@ -346,25 +342,25 @@ const char *tftp_server(char *dir, int time, char *server_ip, char *client_ip, s
 					if (ntohs(get_m.ack.block_number) == block_number - 1) {
 
 						if ((cnt = sendto(sock,(char*) &send_m, 4 + dlen, 0, (struct sockaddr *) &client, c_len)) < 0) {
-							printf("%s.%u: transfer killed\n", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
 							code = 8;
 							goto close_all;
 						}
 
 						errors_number++;
-                        continue;
+						continue;
 					}
 
 					if (ntohs(get_m.ack.block_number) != block_number) { // the ack number is too high or low
-						printf("%s.%u: invalid ack number received\n", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
-						tftp_send_error(sock, 5, "invalid ack number", &client, c_len);
+						tftp_send_error(sock, 5,(char *) "invalid ack number", &client, c_len);
 						code = 9;
 						goto close_all;         // all close;
 					}
 
 					if (dlen < BUFLEN && block_number > 0) {
-						printf("sending sucsessful!");
-						code = 0;
+						if (fclose(fd))
+							code = 14;
+						else
+							code = 0;
 						goto close_all;
 					}
 
@@ -375,29 +371,24 @@ const char *tftp_server(char *dir, int time, char *server_ip, char *client_ip, s
 				dlen = fread(send_m.data.data, 1, sizeof(data), fd);
 
 				if ((dlen != sizeof(data)) && (ferror(fd))) {
-					printf("Error of freading file");
-					tftp_send_error(sock, 6, "Error of opening file", &client, c_len);
+					tftp_send_error(sock, 6, (char*) "Error of opening file", &client, c_len);
 					code = 10;
 					goto close_all;
 				}
 
-				//ÓÚÔ‡‚Í‡ Ô‡ÍÂÚ‡
+				// Send data
 				block_number++;
 
 				send_m.opcode = htons(DATA);
 				send_m.data.block_number = htons(block_number);
 
 				if ((cnt = sendto(sock,(char*) &send_m, 4 + dlen, 0, (struct sockaddr *) &client, c_len)) < 0) {
-					printf("%s.%u: transfer killed\n", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
 					code = 8;
 					goto close_all;
 				}
-
 			}
 		}
-
 	}
-
 close_all:
 
 	Sleep(10);
