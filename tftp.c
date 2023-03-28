@@ -1,8 +1,4 @@
-//#include <tchar.h>
-//#include <fcntl.h>
 #include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
 #include <stdint.h>
 #include <winsock2.h>
 #include <windows.h>
@@ -48,6 +44,7 @@ enum mode {
 	 NETASCII=1,
 	 OCTET
 };
+
 // tftp opcode mnemonic
 enum opcode {
 	 RRQ=1,
@@ -56,6 +53,7 @@ enum opcode {
 	 ACK,
 	 ERR0R
 };
+
 // tftp message structure
 typedef union {
 	 uint16_t opcode;
